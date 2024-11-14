@@ -40,11 +40,6 @@ export const useTheme = () => {
   const toggleTheme = async (event: React.MouseEvent) => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
 
-    // 获取点击位置
-    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-
     // 如果浏览器支持 View Transitions API
     if (document.startViewTransition) {
       const transition = document.startViewTransition(() => {
@@ -53,9 +48,6 @@ export const useTheme = () => {
         localStorage.setItem('theme', newTheme);
       });
 
-      // 设置动画起点
-      document.documentElement.style.setProperty('--x', `${x}px`);
-      document.documentElement.style.setProperty('--y', `${y}px`);
     } else {
       // 降级处理
       setTheme(newTheme);
