@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.17.0'
+          node-version: '18.18.0'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -47,7 +47,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            cd /www/wwwroot/web/nextApp
+            cd /www/wwwroot/web/blog-portal
             pnpm install --prod
             pm2 delete blog-portal || true
             pm2 start ecosystem.config.cjs
