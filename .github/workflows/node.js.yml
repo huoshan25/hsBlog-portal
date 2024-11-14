@@ -37,7 +37,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           source: ".next, package.json, pnpm-lock.yaml, public, ecosystem.config.cjs, next.config.js"
-          target: "/www/wwwroot/web/nextApp"
+          target: "/www/wwwroot/web/blog-portal"
 
       - name: Restart service
         uses: appleboy/ssh-action@master
