@@ -9,8 +9,11 @@ export default {
   ],
   theme: {
     extend: {
+      display: ['group-hover'],
       animation: {
         'blink': 'blink 1s step-end infinite',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'wave-flow': 'waveFlow 1s linear infinite',
       },
       keyframes: {
         blink: {
@@ -18,7 +21,23 @@ export default {
             opacity: '0',
           },
         },
+        fadeInUp: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        waveFlow: {
+          '0%': { transform: 'translateX(-10%)' },
+          '50%': { transform: 'translateX(10%)' },
+          '100%': { transform: 'translateX(-10%)' }
+        }
       },
+
       colors: {
         primary: 'var(--theme-primary)',
         text: 'var(--theme-text)',
