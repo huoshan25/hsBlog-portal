@@ -32,6 +32,7 @@ export default function Navbar() {
           <div className="flex px-6 h-16 items-center justify-between">
             <div className="w-[40px] h-[40px]" />
             <Avatar />
+            <div id="navbar" />
             <div className="flex items-center gap-[30px]">
               <div className="flex items-center space-x-8">
                 <button
