@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Avatar from "@/components/Avatar";
 
 export default function Home() {
 
@@ -8,9 +7,9 @@ export default function Home() {
     <>
       <div className="flex gap-[10px] lg:p-[50px_200px] lt-lg:p-[50px_40px]">
         <div className="flex flex-col">
-          <Avatar />
-          <div className="h-[80px]"></div>
+          <div className="h-[100px]"/>
           <div
+            id="content-start"
             className="text-text min-h-[1.5em] mb-[10px] opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.2s' }}
           >

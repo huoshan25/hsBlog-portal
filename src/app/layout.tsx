@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import Navbar from '@/components/navbar'
-import Avatar from "@/components/Avatar";
+import Avatar from '@/components/Avatar'
 
 export default function RootLayout({
   children,
@@ -30,7 +30,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Avatar />
         <Navbar />
         {children}
       </body>

@@ -29,8 +29,9 @@ export default function Navbar() {
     <header className="h-16">
       <nav className="w-full mt-5">
         <div className="mx-auto lg:px-[200px] lt-lg:px-[20px]">
-          <div className="flex px-4 h-16 items-center justify-between">
+          <div className="flex px-6 h-16 items-center justify-between">
             <div className="w-[40px] h-[40px]" />
+            <Avatar />
             <div className="flex items-center gap-[30px]">
               <div className="flex items-center space-x-8">
                 <button

@@ -80,29 +80,3 @@ body {
     mask-size: 350vmax;
   }
 }
-
-
-
-@keyframes avatar-transition {
-  from {
-    transform: none;
-  }
-  to {
-    transform: scale(0.4) translate(-300px, -200px);
-  }
-}
-
-::view-transition-old(avatar),
-::view-transition-new(avatar) {
-  animation: none;
-  mix-blend-mode: normal;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-::view-transition-group(avatar) {
-  animation-duration: 0.3s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
