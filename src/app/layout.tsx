@@ -15,7 +15,7 @@ export default function RootLayout({
         <meta
           name="description"
           key="description"
-          content="你好，我是火山，一名前端开发工程师。 我很很喜欢用编程去实现一些有意思的事情， 为此，我会在技术上始终保持对前沿技术的追求，并始终在关注和探索新事物。"
+          content="你好，我是火山，一名前端开发工程师。 我喜欢用编程去实现一些有意思的事情， 为此，我会在技术上始终保持对前沿技术的追求，并始终在关注和探索新事物。"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
