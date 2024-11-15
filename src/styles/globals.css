@@ -22,6 +22,13 @@
   --theme-border: #e2e8f0;
   /* 图片背景微调*/
   --theme-bg-img: #ebebeb;
+
+  --x-from: 0;
+  --y-from: 0;
+  --scale-from: 1;
+  --x-to: 0;
+  --y-to: 0;
+  --scale-to: 0.4;
 }
 
 :root.dark {
@@ -33,6 +40,13 @@
   --theme-body: #0f172a;
   --theme-border: #475569;
   --theme-bg-img: #2c2c2c;
+
+  --x-from: 0;
+  --y-from: 0;
+  --scale-from: 1;
+  --x-to: 0;
+  --y-to: 0;
+  --scale-to: 0.4;
 }
 
 body {
@@ -65,4 +79,30 @@ body {
   to {
     mask-size: 350vmax;
   }
+}
+
+
+
+@keyframes avatar-transition {
+  from {
+    transform: none;
+  }
+  to {
+    transform: scale(0.4) translate(-300px, -200px);
+  }
+}
+
+::view-transition-old(avatar),
+::view-transition-new(avatar) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+::view-transition-group(avatar) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
