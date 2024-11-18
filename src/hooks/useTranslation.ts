@@ -11,8 +11,11 @@ export function useNavigationTranslation() {
 }
 
 /*首页内容翻译*/
-export function useHomeTranslation() {
+export function useHomePageTranslation() {
   const { locale } = useLanguage()
   return {
+    hello: language[locale].homePage.hello,
+    introduce: language[locale].homePage.introduce,
+    guideLanguage: language[locale].homePage.guideLanguage,
   }
 }

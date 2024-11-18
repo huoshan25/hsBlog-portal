@@ -1,20 +1,23 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import {useHomePageTranslation} from "@/hooks/useTranslation";
 
 export default function Home() {
-
+  const lang = useHomePageTranslation()
   return (
     <>
       <div className="flex gap-[10px] lg:p-[50px_200px] lt-lg:p-[50px_40px]">
         <div className="flex flex-col">
-          <div className="h-[100px]"/>
+          <div className="h-[100px]" />
           <div
             id="content-start"
             className="text-text min-h-[1.5em] mb-[10px] opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.2s' }}
           >
             <div className="flex items-center">
-              <span className="mr-[5px]">你好</span>
+              <span className="mr-[5px]">{lang.hello}</span>
               <Image className="mb-[7px]" src="/gif/Hi.gif" height={12} width={25} alt="hi" />
             </div>
           </div>
@@ -22,26 +25,26 @@ export default function Home() {
             className="text-text min-h-[1.5em] mb-[10px] opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.4s' }}
           >
-            我是火山，一名前端开发攻城🦁。
+            {lang.introduce[0]}
           </div>
           <div
             className="text-text min-h-[1.5em] mb-[10px] opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.6s' }}
           >
-            22年开始从事前端工作，这个选择源于大学期间对网页制作和HTML课程的浓厚兴趣。
+            {lang.introduce[1]}
           </div>
           <div
             className="text-text min-h-[1.5em] mb-[10px] opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.8s' }}
           >
-            在前端开发的道路上，我始终保持着对技术的热爱和对新知识的渴望。
+            {lang.introduce[2]}
           </div>
 
           <div
             className="text-text min-h-[1.5em] mb-[10px] opacity-0 animate-fade-in-up"
             style={{ animationDelay: '1s' }}
           >
-            从最初的纯前端项目开发起步，为了实现更多有趣的想法，我开始积极学习和拓展其他技术领域。
+            {lang.introduce[3]}
           </div>
           {/*技术栈*/}
           <div
@@ -118,7 +121,7 @@ export default function Home() {
             style={{ animationDelay: '1.4s' }}
           >
             <div className="text-text min-h-[1.9em]">
-              在技术上，我始终保持对前沿技术的追求，并始终在关注和探索新事物。
+              {lang.introduce[4]}
             </div>
           </div>
 
@@ -127,13 +130,13 @@ export default function Home() {
             style={{ animationDelay: '1.6s' }}
           >
             <div>
-              如果你想了解更多，点击
+              {lang.guideLanguage[0]}
               <Link
                 className="text-blue-500 cursor-pointer relative group inline-block mx-1"
                 href="http://47.98.158.27"
                 target="_blank"
               >
-                此处
+                {lang.guideLanguage[1]}
                 <Image
                   src="/svg/wavyLine.svg"
                   width={40}
@@ -152,7 +155,7 @@ export default function Home() {
                   />
                 </div>
               </Link>
-              以转到我的博客
+              {lang.guideLanguage[2]}
             </div>
             <Image src="img/logo.svg" height={15} width={15} alt="blog_logo" />
           </div>
