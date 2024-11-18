@@ -7,6 +7,7 @@ import { useAvatarStore } from '@/store/avatar'
 import Avatar from '@/components/Avatar'
 import { useState } from 'react'
 import { useLanguage } from '@/app/context/LanguageContext'
+import {useNavigationTranslation} from "@/hooks/useTranslation";
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -15,7 +16,7 @@ export default function Navbar() {
   const { isHome, setIsHome } = useAvatarStore()
   const [showLangMenu, setShowLangMenu] = useState(false)
   const { locale, setLocale, t } = useLanguage()
-
+  const { home, daily } = useNavigationTranslation()
   const handleNavigation = async (path: string) => {
     if (pathname === path) return
 
@@ -46,7 +47,7 @@ export default function Navbar() {
                     pathname === '/' ? 'text-primary' : 'text-text hover:text-gray-400'
                   } text-[22px]`}
                 >
-                  {t('navbar.home')}
+                  {home}
                 </button>
                 <button
                   onClick={() => handleNavigation('/daily')}
@@ -54,7 +55,7 @@ export default function Navbar() {
                     pathname === '/daily' ? 'text-primary' : 'text-text hover:text-gray-400'
                   } text-[22px]`}
                 >
-                  {t('navbar.daily')}
+                  {daily}
                 </button>
               </div>
 
