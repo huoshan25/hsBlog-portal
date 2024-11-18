@@ -1,12 +1,13 @@
 import '@/styles/globals.css'
 import Navbar from '@/components/navbar'
-import Avatar from '@/components/Avatar'
+import {LanguageProvider} from "@/app/context/LanguageContext";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
   return (
     <html lang="en">
       <head>
@@ -30,8 +31,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Navbar />
-        {children}
+        <LanguageProvider>
+          <Navbar />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )
