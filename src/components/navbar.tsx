@@ -7,7 +7,8 @@ import { useAvatarStore } from '@/store/avatar'
 import Avatar from '@/components/Avatar'
 import { useState } from 'react'
 import { useLanguage } from '@/app/context/LanguageContext'
-import {useNavigationTranslation} from "@/hooks/useTranslation";
+import {useLocale, useNavigationTranslation} from '@/hooks/useTranslation'
+import { Locale } from '@/app/language'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -17,19 +18,34 @@ export default function Navbar() {
   const [showLangMenu, setShowLangMenu] = useState(false)
   const { locale, setLocale, t } = useLanguage()
   const { home, daily } = useNavigationTranslation()
+
+  /*检查当前路径是否匹配目标路径*/
+  const isPathMatch = (targetPath: string) => {
+    return pathname === targetPath || pathname === `${targetPath}/`
+  }
+
   const handleNavigation = async (path: string) => {
-    if (pathname === path) return
+    if (isPathMatch(path)) return
+
+    const targetPath = path
+    const isTargetHome = isPathMatch(`/${languagePrefix}`)
 
     if (document.startViewTransition) {
-      const transition = document.startViewTransition(async () => {
-        setIsHome(path === '/')
-        router.push(path)
-      })
+      await document.startViewTransition(async () => {
+        setIsHome(isTargetHome)
+        await router.push(targetPath)
+      }).finished
     } else {
-      setIsHome(path === '/')
-      router.push(path)
+      setIsHome(isTargetHome)
+      await router.push(targetPath)
     }
   }
+
+  const handleLocaleChange = (newLocale: string) => {
+    setLocale(newLocale as Locale)
+    setShowLangMenu(false)
+  }
+  const languagePrefix = useLocale()
 
   return (
     <header className="h-16">
@@ -42,17 +58,17 @@ export default function Navbar() {
             <div className="flex items-center gap-[30px]">
               <div className="flex items-center space-x-8">
                 <button
-                  onClick={() => handleNavigation('/')}
+                  onClick={() => handleNavigation(`/${languagePrefix}`)}
                   className={`${
-                    pathname === '/' ? 'text-primary' : 'text-text hover:text-gray-400'
+                    pathname === `/${languagePrefix}` ? 'text-primary' : 'text-text hover:text-gray-400'
                   } text-[22px]`}
                 >
                   {home}
                 </button>
                 <button
-                  onClick={() => handleNavigation('/daily')}
+                  onClick={() => handleNavigation(`/${languagePrefix}/daily`)}
                   className={`${
-                    pathname === '/daily' ? 'text-primary' : 'text-text hover:text-gray-400'
+                    pathname === `/${languagePrefix}/daily` ? 'text-primary' : 'text-text hover:text-gray-400'
                   } text-[22px]`}
                 >
                   {daily}
@@ -79,8 +95,7 @@ export default function Navbar() {
                     <button
                       className="text-text block w-full px-4 py-2 text-left hover:bg-hover bg-base"
                       onClick={() => {
-                        setLocale('zh')
-                        setShowLangMenu(false)
+                        handleLocaleChange('zh')
                       }}
                     >
                       简体中文
@@ -88,8 +103,7 @@ export default function Navbar() {
                     <button
                       className="text-text block w-full px-4 py-2 text-left hover:bg-hover bg-base"
                       onClick={() => {
-                        setLocale('en')
-                        setShowLangMenu(false)
+                        handleLocaleChange('en')
                       }}
                     >
                       English

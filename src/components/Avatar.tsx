@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 function throttle<T extends (...args: any[]) => void>(func: T, limit: number) {
   let inThrottle: boolean
@@ -18,7 +19,11 @@ function throttle<T extends (...args: any[]) => void>(func: T, limit: number) {
 
 export default function Avatar() {
   const pathname = usePathname()
-  const isHome = pathname === '/'
+  const { locale } = useLanguage()
+
+  // 检查是否在首页（考虑语言前缀）
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`
+
   const [contentOffset, setContentOffset] = useState({ x: 0, y: 0 })
   const [navOffset, setNavOffset] = useState({ x: 40, y: 20 })
 
@@ -76,7 +81,13 @@ export default function Avatar() {
       }}
       className="absolute top-0 left-0"
     >
-      <Image src="/img/avatar.jpg" height={100} width={100} alt="avatar" className="rounded-full" />
+      <Image
+        src="/img/avatar.jpg"
+        height={100}
+        width={100}
+        alt="avatar"
+        className="rounded-full"
+      />
     </motion.div>
   )
 }

@@ -1,7 +1,9 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { language, Locale } from '@/app/language'
+import { useRouter } from 'next/navigation'
+import Cookies from 'js-cookie'
 
 interface LanguageContextType {
   locale: Locale
@@ -11,19 +13,24 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>('zh')
-
-  useEffect(() => {
-    const savedLocale = localStorage.getItem('locale') as Locale
-    if (savedLocale) {
-      setLocale(savedLocale)
-    }
-  }, [])
+export function LanguageProvider({
+                                   children,
+                                   defaultLocale
+                                 }: {
+  children: React.ReactNode
+  defaultLocale: string
+}) {
+  const router = useRouter()
+  const [locale, setLocale] = useState<Locale>(defaultLocale as Locale)
 
   const handleSetLocale = (newLocale: Locale) => {
     setLocale(newLocale)
-    localStorage.setItem('locale', newLocale)
+    // 设置 cookie，有效期 365 天
+    Cookies.set('locale', newLocale, { expires: 365, path: '/' })
+    // 更新路由
+    const currentPath = window.location.pathname
+    const newPath = currentPath.replace(/^\/(zh|en)/, `/${newLocale}`)
+    router.push(newPath)
   }
 
   const t = (key: string) => {
