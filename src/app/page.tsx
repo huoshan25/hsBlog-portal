@@ -146,7 +146,7 @@ export default function Home() {
                 />
                 <div className="absolute opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 -bottom-[170px] left-1/2 -translate-x-1/2 w-[260px] bg-white border border-gray-200 rounded-lg shadow-lg p-2 transition-all duration-200 ease-in-out">
                   <Image
-                    src="/img/blogHomepage.png"
+                    src="/img/blog.png"
                     alt="blogHomepage"
                     width={300}
                     height={200}
