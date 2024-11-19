@@ -18,7 +18,7 @@ export default function Home() {
           >
             <div className="flex items-center">
               <span className="mr-[5px]">{lang.hello}</span>
-              <Image className="mb-[7px]" src="/gif/Hi.gif" height={12} width={25} alt="hi" />
+              <Image className="mb-[5px] w-[25px] h-[25px]" src="/gif/Hi.gif" width={0} height={0} alt="hi" />
             </div>
           </div>
           <div
@@ -157,7 +157,7 @@ export default function Home() {
               </Link>
               {lang.guideLanguage[2]}
             </div>
-            <Image src="img/logo.svg" height={15} width={15} alt="blog_logo" />
+            <Image className="h-[15px] w-auto" src="img/logo.svg" height={15} width={15} alt="blog_logo" />
           </div>
         </div>
       </div>

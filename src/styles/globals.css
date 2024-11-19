@@ -22,13 +22,6 @@
   --theme-border: #e2e8f0;
   /* 图片背景微调*/
   --theme-bg-img: #ebebeb;
-
-  --x-from: 0;
-  --y-from: 0;
-  --scale-from: 1;
-  --x-to: 0;
-  --y-to: 0;
-  --scale-to: 0.4;
 }
 
 :root.dark {
@@ -40,13 +33,6 @@
   --theme-body: #0f172a;
   --theme-border: #475569;
   --theme-bg-img: #2c2c2c;
-
-  --x-from: 0;
-  --y-from: 0;
-  --scale-from: 1;
-  --x-to: 0;
-  --y-to: 0;
-  --scale-to: 0.4;
 }
 
 body {
@@ -56,10 +42,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url(/svg/cursorStyle.svg), auto;
 }
-
-/*::view-transition-group(root) {*/
-/*  animation-timing-function: var(--expo-out);*/
-/*}*/
 
 ::view-transition-new(root) {
   mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;

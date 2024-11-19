@@ -76,7 +76,14 @@ export default function Avatar() {
       }}
       className="absolute top-0 left-0"
     >
-      <Image src="/img/avatar.jpg" height={100} width={100} alt="avatar" className="rounded-full" />
+      <Image
+        src="/img/avatar.jpg"
+        height={100}
+        width={100}
+        alt="avatar"
+        priority={true}
+        className="rounded-full"
+      />
     </motion.div>
   )
 }
