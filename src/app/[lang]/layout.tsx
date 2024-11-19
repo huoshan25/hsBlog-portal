@@ -45,7 +45,7 @@ export default async function RootLayout({
       </head>
       <body>
         <LanguageProvider defaultLocale={lang}>
-          <Navbar />
+          <Navbar lang={lang}/>
           {children}
         </LanguageProvider>
       </body>

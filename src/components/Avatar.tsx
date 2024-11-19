@@ -86,6 +86,7 @@ export default function Avatar() {
         height={100}
         width={100}
         alt="avatar"
+        priority={true}
         className="rounded-full"
       />
     </motion.div>
